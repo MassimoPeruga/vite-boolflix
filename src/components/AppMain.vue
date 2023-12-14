@@ -11,13 +11,18 @@ export default {
     components: {
         AppMainCard,
     },
+    methods: {
+        title(result) {
+            return result.title || result.name || undefined;
+        }
+    }
 };
 </script>
 
 <template>
     <main>
-        <AppMainCard v-for="film in store.films" :poster="film.poster_path" :title="film.title"
-            :originalTitle="film.original_title" :vote="film.vote_average" :overview="film.overview" />
+        <AppMainCard v-for="result in store.results" :poster="result.poster_path" :title="this.title(result)"
+            :originalTitle="result.original_title" :vote="result.vote_average" :language="result.original_language" />
     </main>
 </template>
 

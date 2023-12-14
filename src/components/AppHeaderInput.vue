@@ -10,23 +10,22 @@ export default {
     },
     methods: {
         searchResults() {
-            axios.get(this.store.apiFilms,
-                {
-                    params: {
-                        query: this.store.searchKey,
-                    },
-                }
-            ).then((response) => {
-                this.store.films = response.data.results;
-            });
+            const filmsRequest = axios.get(this.store.apiFilms, { params: { query: this.store.searchKey } });
+            const seriesRequest = axios.get(this.store.apiSeries, { params: { query: this.store.searchKey } });
+
+            Promise.all([filmsRequest, seriesRequest])
+                .then(([filmsResponse, seriesResponse]) => {
+                    this.store.results = [...filmsResponse.data.results, ...seriesResponse.data.results];
+                })
         }
     }
+
 };
 </script>
 
 <template>
     <div>
-        <input type="text" placeholder="Scrivi il nome di un film" @keyup.enter="searchResults" v-model="store.searchKey">
+        <input type="text" placeholder="Cerca un film o una serie" @keyup.enter="searchResults" v-model="store.searchKey">
         <button @click="searchResults">Cerca</button>
     </div>
 </template>
