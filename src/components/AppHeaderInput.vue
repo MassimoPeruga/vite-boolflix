@@ -30,6 +30,9 @@ export default {
                 .then(([filmsResponse, seriesResponse]) => {
                     // Popolo l'array nello store con l'insieme dei film e delle serie trovati
                     this.store.results = [...filmsResponse.data.results, ...seriesResponse.data.results];
+                })
+                .catch((error) => {
+                    console.error('Errore nella ricerca:', error);
                 });
         },
     },
