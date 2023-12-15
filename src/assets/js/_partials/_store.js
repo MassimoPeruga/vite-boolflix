@@ -10,8 +10,8 @@ export const store = reactive({
     searchKey: '',
 
     // API per ottenere i film
-    apiFilms: 'https://api.themoviedb.org/3/search/movie?api_key=0888396f609a05778858c3a90b440d5e&language=it-IT&page=1',
+    apiFilms: 'https://api.themoviedb.org/3/search/movie',
 
     // API per ottenere le serie TV
-    apiSeries: 'https://api.themoviedb.org/3/search/tv?api_key=0888396f609a05778858c3a90b440d5e&language=it-IT&page=1',
+    apiSeries: 'https://api.themoviedb.org/3/search/tv',
 });

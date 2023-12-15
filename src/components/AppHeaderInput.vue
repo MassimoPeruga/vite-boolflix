@@ -21,9 +21,16 @@ export default {
     methods: {
         // Metodo per effettuare la ricerca di film e serie
         searchResults() {
+            // Parametri di riscerca
+            const searchParams = {
+                api_key: '0888396f609a05778858c3a90b440d5e',
+                language: 'it-IT',
+                page: 1,
+                query: this.store.searchKey,
+            };
             // Effettuo richieste parallele per film e serie
-            const filmsRequest = axios.get(this.store.apiFilms, { params: { query: this.store.searchKey } });
-            const seriesRequest = axios.get(this.store.apiSeries, { params: { query: this.store.searchKey } });
+            const filmsRequest = axios.get(this.store.apiFilms, { params: searchParams });
+            const seriesRequest = axios.get(this.store.apiSeries, { params: searchParams });
 
             // Utilizzo Promise.all per gestire entrambe le richieste in modo asincrono
             Promise.all([filmsRequest, seriesRequest])
@@ -32,7 +39,9 @@ export default {
                     this.store.results = [...filmsResponse.data.results, ...seriesResponse.data.results];
                 })
                 .catch((error) => {
+                    // Nel caso in cui avvenga un errore durante la chiamata API stampo l'errore in console e svuoto l'array dei risultati
                     console.error('Errore nella ricerca:', error);
+                    this.store.results = [];
                 });
         },
     },
