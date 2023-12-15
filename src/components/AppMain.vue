@@ -42,7 +42,7 @@ export default {
         <li v-for="result in store.results">
             <!-- Passa al componente Card le props con le info richieste nelle Milestone del risultato -->
             <AppMainCard :poster="result.poster_path" :title="this.title(result)"
-                :originalTitle="this.originalTitle(result)" :vote="Math.ceil(result.vote_average / 2)"
+                :originalTitle="this.originalTitle(result)" :vote="result.vote_average"
                 :language="result.original_language" />
             <hr>
         </li>
