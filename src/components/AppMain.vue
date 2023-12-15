@@ -28,6 +28,10 @@ export default {
         title(result) {
             return result.title || result.name || undefined;
         },
+        // Metodo che restituisce il titolo originale di un film, il nome di una serie o undefined quando nessuno dei due attributi è presente nell'oggetto
+        originalTitle(result) {
+            return result.original_title || result.original_name || undefined;
+        }
     },
 };
 </script>
@@ -37,8 +41,9 @@ export default {
         <!-- Itera attraverso l'array dei risultati nello state managment -->
         <li v-for="result in store.results">
             <!-- Passa al componente Card le props con le info richieste nelle Milestone del risultato -->
-            <AppMainCard :poster="result.poster_path" :title="this.title(result)" :originalTitle="result.original_title"
-                :vote="Math.ceil(result.vote_average / 2)" :language="result.original_language" />
+            <AppMainCard :poster="result.poster_path" :title="this.title(result)"
+                :originalTitle="this.originalTitle(result)" :vote="Math.ceil(result.vote_average / 2)"
+                :language="result.original_language" />
             <hr>
         </li>
     </ul>
