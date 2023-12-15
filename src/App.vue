@@ -1,9 +1,13 @@
 <script>
+// Importo i componenti necessari
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+
 export default {
+  // Nome del componente
   name: 'Boolflix',
 
+  // Dichiarazione dei componenti utilizzati 
   components: {
     AppHeader,
     AppMain,
@@ -11,9 +15,15 @@ export default {
 };
 </script>
 
+  <!-- Struttura principale dell'app -->
 <template>
+  <!-- Componente per l'intestazione dell'app -->
   <AppHeader />
-  <AppMain />
-</template>
+  <!-- /Componente per l'intestazione dell'app -->
 
-<style lang="scss"></style>
+  <!-- Contenuto principale dell'app -->
+  <main>
+    <AppMain />
+  </main>
+  <!-- /Contenuto principale dell'app -->
+</template>
