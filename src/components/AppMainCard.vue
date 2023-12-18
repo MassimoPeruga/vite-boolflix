@@ -36,7 +36,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.5s ease1;
+    transition: transform 0.5s ease;
 
     &:hover {
         transform: scale(1.05);
