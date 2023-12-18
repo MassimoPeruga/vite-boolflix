@@ -47,14 +47,8 @@ export default {
         display: flex;
         align-items: center;
         text-align: center;
-        height: 513px;
+        height: 100%;
     }
 
-    // Small devices (landscape phones, 576px and up)
-    @media (min-width: 576px) {
-        h4 {
-            height: 100%;
-        }
-    }
 }
 </style>

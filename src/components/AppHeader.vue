@@ -15,7 +15,7 @@ export default {
 
 <template>
     <header>
-        <div class=" flex-column flex-lg-row d-flex align-items-center justify-content-between px-3 shadow mx-auto">
+        <div class=" flex-column flex-lg-row d-flex align-items-center justify-content-between shadow mx-auto">
             <!-- Titolo principale dell'app -->
             <h1 class="m-0">Boolflix</h1>
 

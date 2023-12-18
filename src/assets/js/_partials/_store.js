@@ -11,6 +11,8 @@ export const store = reactive({
     // Parametri di ricerca
     searchParams,
 
-    // Elenco dei risultati della ricerca
-    results: [],
+    // Elenco dei risultati della ricerca per i Film
+    filmResults: [],
+    // Elenco dei risultati della ricerca per le Srerie TV
+    tvResults: [],
 });

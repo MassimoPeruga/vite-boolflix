@@ -21,38 +21,38 @@ export default {
     components: {
         AppMainCard,
     },
-
-    // Metodi del componente
-    methods: {
-        // Metodo che restituisce il titolo di un film, il nome di una serie o undefined quando nessuno dei due attributi è presente nell'oggetto
-        title(result) {
-            return result.title || result.name || undefined;
-        },
-        // Metodo che restituisce il titolo originale di un film, il nome di una serie o undefined quando nessuno dei due attributi è presente nell'oggetto
-        originalTitle(result) {
-            return result.original_title || result.original_name || undefined;
-        }
-    },
 };
 </script>
 
 <template>
-    <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-        <!-- Itera attraverso l'array dei risultati nello state managment -->
-        <li v-for="result in store.results" class="col p-3">
-            <!-- Passa al componente Card le props con le info richieste nelle Milestone del risultato -->
-            <AppMainCard :poster="result.poster_path" :title="this.title(result)"
-                :originalTitle="this.originalTitle(result)" :vote="result.vote_average"
-                :language="result.original_language" />
-        </li>
-    </ul>
+    <section>
+        <h2 class="m-0 p-3">Film</h2>
+        <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-0 p-0">
+            <!-- Itera attraverso l'array dei risultati nello state managment -->
+            <li v-for="film in store.filmResults" class="col p-3">
+                <!-- Passa al componente Card le props con le info richieste nelle Milestone del risultato -->
+                <AppMainCard :poster="film.poster_path" :title="film.title" :originalTitle="film.original_title"
+                    :vote="film.vote_average" :language="film.original_language" />
+            </li>
+        </ul>
+    </section>
+
+    <section class="mt-5">
+        <h2 class="m-0 p-3">Serie Tv</h2>
+        <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-0 p-0">
+            <!-- Itera attraverso l'array dei risultati nello state managment -->
+            <li v-for="serie in store.tvResults" class="col p-3">
+                <!-- Passa al componente Card le props con le info richieste nelle Milestone del risultato -->
+                <AppMainCard :poster="serie.poster_path" :title="serie.name" :originalTitle="serie.original_name"
+                    :vote="serie.vote_average" :language="serie.original_language" />
+            </li>
+        </ul>
+    </section>
 </template>
 
 <style lang="scss" scoped>
-ul {
-    max-height: 100%;
+section {
     max-width: 1440px;
     margin: auto;
-    padding: 0;
 }
 </style>

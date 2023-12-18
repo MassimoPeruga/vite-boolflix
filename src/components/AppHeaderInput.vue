@@ -28,13 +28,16 @@ export default {
             // Utilizzo Promise.all per gestire entrambe le richieste in modo asincrono
             Promise.all([filmsRequest, seriesRequest])
                 .then(([filmsResponse, seriesResponse]) => {
-                    // Popolo l'array nello store con l'insieme dei film e delle serie trovati
-                    this.store.results = [...filmsResponse.data.results, ...seriesResponse.data.results];
+                    // Popolo gli array nello store con i film e le serie trovati
+                    this.store.filmResults = filmsResponse.data.results;
+                    this.store.tvResults = seriesResponse.data.results;
+
                 })
                 .catch((error) => {
                     // Nel caso in cui avvenga un errore durante la chiamata API stampo l'errore in console e svuoto l'array dei risultati
                     console.error('Errore nella ricerca:', error);
-                    this.store.results = [];
+                    this.store.filmResults = [];
+                    this.store.tvResults = [];
                 });
         },
     },
