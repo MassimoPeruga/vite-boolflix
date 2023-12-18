@@ -1,17 +1,16 @@
 // Importa la funzione reactive da Vue
 import { reactive } from 'vue';
+// Configurazione chiamata API
+import { apiUrls, searchParams } from './_apiConfig';
 
-// Crea un oggetto reattivo (state managment) contenente lo stato dell'applicazione
+// Creo un oggetto reattivo (state managment)
 export const store = reactive({
+    // Indirizzi chiamata API
+    apiUrls,
+
+    // Parametri di ricerca
+    searchParams,
+
     // Elenco dei risultati della ricerca
     results: [],
-
-    // Chiave di ricerca per la barra di ricerca
-    searchKey: '',
-
-    // API per ottenere i film
-    apiFilms: 'https://api.themoviedb.org/3/search/movie',
-
-    // API per ottenere le serie TV
-    apiSeries: 'https://api.themoviedb.org/3/search/tv',
 });

@@ -21,16 +21,9 @@ export default {
     methods: {
         // Metodo per effettuare la ricerca di film e serie
         searchResults() {
-            // Parametri di riscerca
-            const searchParams = {
-                api_key: '0888396f609a05778858c3a90b440d5e',
-                language: 'it-IT',
-                page: 1,
-                query: this.store.searchKey,
-            };
             // Effettuo richieste parallele per film e serie
-            const filmsRequest = axios.get(this.store.apiFilms, { params: searchParams });
-            const seriesRequest = axios.get(this.store.apiSeries, { params: searchParams });
+            const filmsRequest = axios.get(this.store.apiUrls.apiFilms, { params: store.searchParams });
+            const seriesRequest = axios.get(this.store.apiUrls.apiSeries, { params: store.searchParams });
 
             // Utilizzo Promise.all per gestire entrambe le richieste in modo asincrono
             Promise.all([filmsRequest, seriesRequest])
@@ -51,8 +44,8 @@ export default {
 <template>
     <form @submit.prevent="searchResults" class="custom_input w-75 w-md-50 justify-content-center justify-content-lg-end">
         <!-- Input per inserire il titolo da cercare con v-model alla chiave di ricerca -->
-        <input type="text" placeholder="Cerca un film o una serie TV" v-model="store.searchKey" id="search_key_input"
-            class="w-75">
+        <input type="text" placeholder="Cerca un film o una serie TV" v-model="store.searchParams.query"
+            id="search_key_input" class="w-75">
         <label for="search_key_input" hidden>Cerca un film o una serie TV</label>
 
         <!-- Pulsante per avviare la ricerca -->
