@@ -49,13 +49,61 @@ export default {
 </script>
 
 <template>
-    <div>
+    <form @submit.prevent="searchResults" class="custom_input w-75 w-md-50 justify-content-center justify-content-lg-end">
         <!-- Input per inserire il titolo da cercare con v-model alla chiave di ricerca -->
-        <input type="text" placeholder="Cerca un film o una serie" @keyup.enter="searchResults" v-model="store.searchKey">
+        <input type="text" placeholder="Cerca un film o una serie TV" v-model="store.searchKey" id="search_key_input"
+            class="w-75">
+        <label for="search_key_input" hidden>Cerca un film o una serie TV</label>
 
         <!-- Pulsante per avviare la ricerca -->
-        <button @click="searchResults">Cerca</button>
-    </div>
+        <button type="submit">
+            <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+        </button>
+    </form>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../assets/scss/partial/variables' as *;
+
+form {
+    font-family: 'Audiowide', sans-serif;
+    display: flex;
+    align-items: center;
+
+    #search_key_input {
+        max-width: 350px;
+        font-size: 1rem;
+        padding: 6px;
+        outline: none;
+        background: #FFFFFF;
+        color: $blue-color;
+        border: 4px double $black-color;
+        border-radius: 6px;
+
+        &:focus {
+            background: #F2F2F2;
+            border: 4px double $black-color;
+            border-radius: 6px;
+        }
+
+        &::placeholder {
+            color: $blue-color;
+            font-size: .75rem;
+        }
+    }
+
+    button {
+        color: $blue-color !important;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 4px double $black-color;
+        background: $green-color;
+
+        &:hover {
+            color: $blue-color !important;
+            background: $green-color;
+        }
+    }
+
+}
+</style>

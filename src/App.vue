@@ -27,3 +27,11 @@ export default {
   </main>
   <!-- /Contenuto principale dell'app -->
 </template>
+
+<style lang="scss">
+main {
+  margin-top: 100px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+</style>

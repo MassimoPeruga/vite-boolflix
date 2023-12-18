@@ -30,27 +30,35 @@ export default {
 </script>
 
 <template>
-    <ul>
+    <ul class="p-0">
         <!-- Mostra il titolo se disponibile -->
-        <li v-if="title">Titolo: {{ title }}</li>
+        <li v-if="title">
+            <h5>Titolo: </h5>
+            {{ title }}
+        </li>
 
         <!-- Mostra il titolo originale solo se disponibie e se diverso dal titolo tradotto -->
-        <li v-if="originalTitle && title !== originalTitle">Titolo Originale: {{ originalTitle }}</li>
+        <li v-if="originalTitle && title !== originalTitle">
+            <h5>Titolo Originale: </h5>
+            {{ originalTitle }}
+        </li>
 
         <!-- Lingua originale -->
-        <li v-if="language">Lingua originale:
+        <li v-if="language">
+            <h5>Lingua originale: </h5>
             <!-- SE la lingua originale è IT allora mostra la bandiera italiana -->
             <img v-if="language === 'it'" src="../assets/img/Flag_of_Italy.svg" alt="Bandiera Italiana">
             <!-- ALTRIMENTI SE la lingua originale è EN mostra la bandiera della Gran Bretagna -->
             <img v-else-if="language === 'en'" src="../assets/img/Flag_of_the_United_Kingdom.svg" alt="Bandiera UK">
             <!-- Altrimenti, mostra solo il codice linguistico -->
-            <span v-else>{{ language }}</span>
+            <span v-else>{{ language.toUpperCase() }}</span>
         </li>
 
         <!-- Se disponibile la valutazione è disponibile mostra un totale di 5 stelle -->
-        <li v-if="vote !== undefined">Valutazione:
+        <li v-if="vote !== undefined">
+            <h5>Valutazione: </h5>
             <!-- Stelle piene in base al voto ottenuto dai dati ricevuti -->
-            <span v-for="n in formatVote"><font-awesome-icon icon="fa-solid fa-star" /></span>
+            <span v-for="n in formatVote"><font-awesome-icon icon="fa-solid fa-star" style="color: #ffbd00;" /></span>
             <!-- Stelle vuote per la parte restante -->
             <span v-for="n in 5 - formatVote"><font-awesome-icon icon="fa-regular fa-star" /></span>
             <!-- Easter egg natalizio (commentato per disabilitarlo) -->
@@ -61,7 +69,37 @@ export default {
 
 <!-- Stili specifici per questo componente -->
 <style lang="scss" scoped>
-img {
-    width: 1rem;
+@use '../assets/scss/partial/variables' as *;
+
+ul {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: $blck-opacity;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    li {
+        padding: 0 10px;
+        margin-top: 15px;
+        border-bottom: 1px solid $white-color;
+
+        h5 {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        img {
+            width: 1rem;
+        }
+    }
+
 }
 </style>
