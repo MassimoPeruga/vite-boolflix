@@ -25,8 +25,8 @@ export default {
 </script>
 
 <template>
-    <section>
-        <h2 class="m-0 p-3">Film</h2>
+    <section v-if="store.filmResults.length > 0">
+        <h2 class="m-0 p-3 border-bottom">Film</h2>
         <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-0 p-0">
             <!-- Itera attraverso l'array dei risultati nello state managment -->
             <li v-for="film in store.filmResults" class="col p-3">
@@ -37,8 +37,8 @@ export default {
         </ul>
     </section>
 
-    <section class="mt-5">
-        <h2 class="m-0 p-3">Serie Tv</h2>
+    <section class="mt-5" v-if="store.tvResults.length > 0">
+        <h2 class="m-0 p-3 border-bottom">Serie Tv</h2>
         <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-0 p-0">
             <!-- Itera attraverso l'array dei risultati nello state managment -->
             <li v-for="serie in store.tvResults" class="col p-3">
